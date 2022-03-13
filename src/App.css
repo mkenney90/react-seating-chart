@@ -27,6 +27,7 @@
     width: 10%;
     height: 80vh;
     overflow-y: scroll;
+    z-index: 10;
 }
 
 .guest-card {
@@ -55,9 +56,26 @@
 .table-container {
     position: relative;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
-    width: 40%;
+    width: 90%;
+    align-items: center;
+}
+
+.table-container-left {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    flex-flow: wrap;
+    width: 35%;
+    height: 50%;
+}
+
+.table-container-right {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    flex-flow: wrap;
+    width: 35%;
 }
 
 .table-guest-container {
@@ -84,6 +102,12 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+.dance-floor {
+    height: 25%;
+    padding: 10%;
+    background-color: #e4e2e25e;
 }
 
 .circleBase {

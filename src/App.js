@@ -3,25 +3,24 @@ import { useEffect, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GuestBank from "./GuestBank";
-import GuestTable from "./GuestTable";
+import GuestTableContainer from "./GuestTableContainer";
 import { faRotateLeft, faSave } from "@fortawesome/free-solid-svg-icons";
 import formatId from "./util/formatId";
 import GuestDataService from "./services/guest.services";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
     const [guestData, setGuestData] = useState([]);
-    const tables = 8;
+    const tables = 9;
     const zeros = Array.apply(null, Array(tables + 1)).map(function () {
         return [];
     });
     const [seatingChart, setSeatingChart] = useState(zeros);
 
-    const tableArray = [];
-
     const getData = async () => {
         const data = await GuestDataService.getAllGuests();
 
-        if (data.docs.length > 0) {
+        if (data.docs.length > 1) {
             const guests = data.docs.map((g) => ({
                 id: g.id,
                 tag: formatId(g.data().name),
@@ -61,6 +60,9 @@ function App() {
     const handleSave = () => {
         try {
             GuestDataService.updateGuests(guestData);
+            toast.success("Seating chart saved!", {
+                style: { fontSize: "13pt" },
+            });
         } catch (err) {
             console.error(err);
         }
@@ -78,15 +80,15 @@ function App() {
         updateSeatingChart();
     }, [guestData]);
 
-    for (let i = 1; i <= tables; i++) {
-        tableArray.push(
-            <GuestTable
-                key={`table-${i}`}
-                tableNumber={i}
-                seatingChart={seatingChart}
-            />
-        );
-    }
+    // for (let i = 1; i <= tables; i++) {
+    //     tableArray.push(
+    //         <GuestTable
+    //             key={`table-${i}`}
+    //             tableNumber={i}
+    //             seatingChart={seatingChart}
+    //         />
+    //     );
+    // }
 
     const onDragEnd = (result) => {
         const { destination, source, draggableId } = result;
@@ -131,7 +133,14 @@ function App() {
         <div className="App">
             <DragDropContext onDragEnd={onDragEnd}>
                 <GuestBank seatingChart={seatingChart} />
-                <div className="table-container">{tableArray}</div>
+                <div className="table-container">
+                    {
+                        <GuestTableContainer
+                            totalTables={tables}
+                            seatingChart={seatingChart}
+                        />
+                    }
+                </div>
             </DragDropContext>
             <button className="btn btn-reset" onClick={handleReset}>
                 <FontAwesomeIcon icon={faRotateLeft} size={"3x"} />
@@ -139,6 +148,7 @@ function App() {
             <button className="btn btn-save" onClick={handleSave}>
                 <FontAwesomeIcon icon={faSave} size={"3x"} />
             </button>
+            <Toaster />
         </div>
     );
 }
