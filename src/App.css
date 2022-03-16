@@ -59,12 +59,13 @@
     flex-wrap: wrap;
     width: 90%;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .table-container-left {
     position: relative;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     flex-flow: wrap;
     width: 35%;
     height: 50%;
@@ -73,7 +74,7 @@
 .table-container-right {
     position: relative;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-flow: wrap;
     width: 35%;
 }
@@ -107,7 +108,9 @@
 .dance-floor {
     height: 25%;
     padding: 10%;
-    background-color: #e4e2e25e;
+    background-color: #00405e50;
+    border: 0.35em solid #00496b9a;
+    border-radius: 1%;
 }
 
 .circleBase {
@@ -150,4 +153,28 @@
 
 .btn:hover {
     border-width: 2px 2px 6px 2px;
+}
+
+.loading-text {
+    position: absolute;
+    top: 5%;
+}
+
+.loading-bar {
+    position: absolute;
+    width: 200px;
+    height: 12px;
+    background-color: #ffffffe0;
+    top: 50%;
+    left: 50%;
+    animation: loading-spinner 0.25s linear infinite;
+}
+
+@keyframes loading-spinner {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
