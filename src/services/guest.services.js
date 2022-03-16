@@ -1,12 +1,5 @@
 import { db } from "../firebase-config";
-import {
-    collection,
-    getDocs,
-    getDoc,
-    addDoc,
-    setDoc,
-    doc,
-} from "firebase/firestore";
+import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
 
 const guestCollectionRef = collection(db, "guests");
 
