@@ -1,7 +1,8 @@
 import GuestTable from "./GuestTable";
+import HeadTable from "./HeadTable";
 
 export default function GuestTableContainer({ totalTables, seatingChart }) {
-    const tableSplit = [5, 4];
+    const tableSplit = [9, 0];
     const leftSideTables = [];
     const rightSideTables = [];
 
@@ -27,9 +28,13 @@ export default function GuestTableContainer({ totalTables, seatingChart }) {
 
     return (
         <>
-            <div className="table-container-left">{leftSideTables}</div>
-            <div className="dance-floor"></div>
-            <div className="table-container-right">{rightSideTables}</div>
+            <div className="container-column">
+                <div className="table-container-left">{leftSideTables}</div>
+                <div className="table-container-head">
+                    <HeadTable tableNumber={10} seatingChart={seatingChart} />
+                </div>
+            </div>
+            <div className="dance-floor">Dance Floor</div>
         </>
     );
 }

@@ -8,11 +8,12 @@ import { faRotateLeft, faSave } from "@fortawesome/free-solid-svg-icons";
 import formatId from "./util/formatId";
 import GuestDataService from "./services/guest.services";
 import toast, { Toaster } from "react-hot-toast";
+import localData from "./guests";
 
 function App() {
     const [guestData, setGuestData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const tables = 9;
+    const tables = 10;
     const zeros = Array.apply(null, Array(tables + 1)).map(function () {
         return [];
     });
@@ -29,12 +30,7 @@ function App() {
             }));
             setGuestData(guests);
         } else {
-            fetch("guests.json")
-                .then((res) => res.json())
-                .then(function (res) {
-                    res.forEach((guest) => (guest.tag = formatId(guest.name)));
-                    setGuestData(res);
-                });
+            setGuestData(localData);
         }
         setLoading(false);
     };
@@ -110,7 +106,6 @@ function App() {
             destClone.splice(destination.droppableId.index, 0, moved);
             const targetGuest = updatedData.find((g) => g.tag === draggableId);
             if (targetGuest) targetGuest.table = newTable;
-
             setGuestData(updatedData);
         } else {
             const [moved] = updatedData.splice(source.index, 1);
@@ -122,6 +117,7 @@ function App() {
                 source.index,
                 destination.index
             );
+            console.log(seatingChart);
         }
     };
 
