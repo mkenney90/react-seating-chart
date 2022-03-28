@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-seating-chart/static/css/main.d5ebe22c.css",
-    "main.js": "/react-seating-chart/static/js/main.961afe8f.js",
+    "main.css": "/react-seating-chart/static/css/main.6f85b30c.css",
+    "main.js": "/react-seating-chart/static/js/main.181f287f.js",
     "static/js/787.506fa9eb.chunk.js": "/react-seating-chart/static/js/787.506fa9eb.chunk.js",
     "index.html": "/react-seating-chart/index.html",
-    "main.d5ebe22c.css.map": "/react-seating-chart/static/css/main.d5ebe22c.css.map",
-    "main.961afe8f.js.map": "/react-seating-chart/static/js/main.961afe8f.js.map",
+    "main.6f85b30c.css.map": "/react-seating-chart/static/css/main.6f85b30c.css.map",
+    "main.181f287f.js.map": "/react-seating-chart/static/js/main.181f287f.js.map",
     "787.506fa9eb.chunk.js.map": "/react-seating-chart/static/js/787.506fa9eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d5ebe22c.css",
-    "static/js/main.961afe8f.js"
+    "static/css/main.6f85b30c.css",
+    "static/js/main.181f287f.js"
   ]
 }
